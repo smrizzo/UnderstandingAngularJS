@@ -32,3 +32,12 @@ myApp.controller('secondController', ['$scope', '$log', '$routeParams', function
     
     
 }]);
+
+
+myApp.directive('searchResult', function(){
+    return {
+        restrict: 'AE',
+        templateUrl: 'directives/search.html',
+        replace: true
+    }
+})

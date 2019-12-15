@@ -23,7 +23,17 @@ myApp.config(function ($routeProvider) {
 
 myApp.controller('mainController', ['$scope', '$log', function($scope, $log) {
     
+    $scope.person = {
+        name: 'John Doe',
+        address: '555 Main st.',
+        city: 'New York',
+        state: 'NY',
+        zip: '1111'
+    }
     
+    $scope.formatedAddress = function(person){
+        return person.address + ', ' + person.city + ', ' + person.state + ", " + person.zip;
+    }
     
 }]);
 
@@ -37,6 +47,10 @@ myApp.directive("searchResult", function() {
    return {
        restrict: 'AECM',
        templateUrl: 'directives/searchresult.html',
-       replace: true
+       replace: true,
+       scope: {
+           personObject: "=",
+           formatedPersonFunction: "&"
+       }
    }
 });
