@@ -69,6 +69,36 @@ myApp.directive("searchResult", function() {
        scope: {
            personObject: "=",
            formattedAddressFunction: "&"
-       }
+       },
+       link: function(scope, element, attrs) {
+                   console.log("Post-linking with shorthand since almost never use compile and shouldn't use pre-link..");
+                   console.log(scope);
+                   if (scope.personObject.name == 'Jane Doe') {
+                       element.removeAttr('class');
+                   }
+//                   elements.removeAttr('class');
+                   console.log(element);
+               }
+//       compile: function(elem, attr) {
+//           console.log("compiling..");
+////           elem.removeAttr('class');//Vanilla javascript manipulating the html
+//           console.log(elem);
+//           
+//           return {
+////               pre: function(scope, element, attrs) {
+////                 console.log("Pre-Linking..")  
+////                 console.log(element);
+////               },
+//               post: function(scope, element, attrs) {
+//                   console.log("Post-linking..");
+//                   console.log(scope);
+//                   if (scope.personObject.name == 'Jane Doe') {
+//                       element.removeAttr('class');
+//                   }
+////                   elements.removeAttr('class');
+//                   console.log(element);
+//               }
+//           }
+//       }
    }
 });
